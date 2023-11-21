@@ -17,6 +17,7 @@ builder.Services.AddDbContext<RepositoryContext>(options =>
 
 });
 
+builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 
 var app = builder.Build();
 

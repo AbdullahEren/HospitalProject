@@ -4,8 +4,8 @@ namespace HospitalProject.Repositories.Contracts
 {
     public interface IDoctorRepository : IRepositoryBase<Doctor>
     {
-        Task<Doctor> GetDoctorByIdAsync(int id);
-        Task<IEnumerable<Doctor>> GetAllDoctorsAsync();
+        Task<Doctor> GetDoctorByIdAsync(int id, bool trackChanges);
+        Task<IEnumerable<Doctor>> GetAllDoctorsAsync(bool trackChanges);
         Task CreateDoctor(Doctor doctor);
         Task UpdateDoctor(Doctor doctor);
         Task DeleteDoctor(Doctor doctor);
