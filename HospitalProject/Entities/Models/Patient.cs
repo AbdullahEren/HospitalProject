@@ -8,6 +8,12 @@ namespace HospitalProject.Entities.Models
 
         public string FName { get; set; }
         public string LName { get; set; }
+        public int? FamilyDoctorID { get; set; }
 
+        public Doctor FamilyDoctor { get; set; }
+
+        public ICollection<Appointment> Appointments { get; set; }
+
+        public ICollection<FamilyDoctorChange> FamilyDoctorChanges { get; set; }
     }
 }
