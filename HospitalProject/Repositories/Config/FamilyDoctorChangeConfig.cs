@@ -11,14 +11,16 @@ namespace HospitalProject.Repositories.Config
             builder.HasKey(f => f.ChangeID);
             builder.Property(f => f.ChangeDate).IsRequired();
             builder.HasOne(f => f.Patient)
-                .WithMany()
+                .WithMany(a => a.FamilyDoctorChanges)
                 .HasForeignKey(f => f.PatientID);
             builder.HasOne(f => f.OldFamilyDoctor)
                 .WithMany()
-                .HasForeignKey(f => f.OldFamilyDoctorID);
+                .HasForeignKey(f => f.OldFamilyDoctorID)
+                .OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(f => f.NewFamilyDoctor)
                 .WithMany()
-                .HasForeignKey(f => f.NewFamilyDoctorID);
+                .HasForeignKey(f => f.NewFamilyDoctorID)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 
