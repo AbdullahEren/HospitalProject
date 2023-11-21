@@ -1,12 +1,18 @@
-﻿namespace HospitalProject.Entities.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace HospitalProject.Entities.Models
 {
     public class FamilyDoctorChange
     {
         public int ChangeID { get; set; }
+        [Required]
         public int PatientID { get; set; }
+        [Required]
         public int OldFamilyDoctorID { get; set; }
+        [Required]
         public int NewFamilyDoctorID { get; set; }
-        public DateTime ChangeDate { get; set; }
+        [Required]
+        public DateTime ChangeDate { get; set; } = DateTime.Now;
 
         public Patient Patient { get; set; }
 
