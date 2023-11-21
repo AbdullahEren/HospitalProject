@@ -2,7 +2,7 @@
 
 namespace HospitalProject.Entities.Dtos
 {
-    public record PatientForUpdate
+    public record PatientDtoForUpdate
     {
         [Required]
         public string FName { get; init; }
