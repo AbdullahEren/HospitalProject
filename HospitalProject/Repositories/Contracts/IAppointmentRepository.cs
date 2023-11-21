@@ -7,7 +7,7 @@ namespace HospitalProject.Repositories.Contracts
         Task<Appointment> GetAppointmentByIdAsync(int id, bool trackChanges);
         Task<IEnumerable<Appointment>> GetAllAppointmentsAsync(bool trackChanges);
         Task CreateAppointment(Appointment appointment);
-        Task UpdateAppointment(Appointment appointment);
+        Task UpdateAppointment(int id,Appointment appointment);
         Task DeleteAppointment(Appointment appointment);
     }
 }

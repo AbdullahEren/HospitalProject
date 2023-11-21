@@ -13,7 +13,7 @@ namespace HospitalProject.Repositories
         private Lazy<IMedicineRepository> _medicineRepository;
         private Lazy<IFamilyDoctorChangeRepository> _familyDoctorChangeRepository;
 
-        public RepositoryManager(RepositoryContext repositoryContext, Lazy<IPatientRepository> patientRepository, Lazy<IDoctorRepository> doctorRepository, Lazy<IAppointmentRepository> appointmentRepository, Lazy<IPrescriptionRepository> prescriptionRepository, Lazy<IMedicineRepository> medicineRepository, Lazy<IFamilyDoctorChangeRepository> familyDoctorChangeRepository)
+        public RepositoryManager(RepositoryContext repositoryContext)
         {
             _context = repositoryContext;
             _patientRepository = new Lazy<IPatientRepository>(() => new PatientRepository(_context));

@@ -7,7 +7,7 @@ namespace HospitalProject.Repositories.Contracts
         Task<Doctor> GetDoctorByIdAsync(int id, bool trackChanges);
         Task<IEnumerable<Doctor>> GetAllDoctorsAsync(bool trackChanges);
         Task CreateDoctor(Doctor doctor);
-        Task UpdateDoctor(Doctor doctor);
+        Task UpdateDoctor(int id,Doctor doctor);
         Task DeleteDoctor(Doctor doctor);
     }
 }
