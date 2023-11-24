@@ -4,9 +4,8 @@ namespace HospitalProject.Services.Contracts
 {
     public interface IFamilyDoctorChangeService
     {
-        Task<FamilyDoctorChange> GetFamilyDoctorChangeByIdAsync(int id, bool trackChanges);
+        Task<IEnumerable<FamilyDoctorChange>> GetFamilyDoctorChangeByPatientIdAsync(int id, bool trackChanges);
         Task<IEnumerable<FamilyDoctorChange>> GetAllFamilyDoctorChangesAsync(bool trackChanges);
-        Task CreateFamilyDoctorChange(FamilyDoctorChange familyDoctorChange);
-        Task DeleteFamilyDoctorChange(int id, bool trackChanges);
+        Task DeleteFamilyDoctorChangeByPatientId(int id, bool trackChanges);
     }
 }

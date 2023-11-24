@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HospitalProject.Entities.Dtos;
+using HospitalProject.Entities.Models;
 using HospitalProject.Repositories.Contracts;
 using HospitalProject.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
@@ -49,30 +50,48 @@ namespace HospitalProject.Services
 
             return new OkObjectResult("Appointment Rejected");
         }
-        public Task CreateAppointment(AppointmentDtoForCreation appointment)
+        public async Task CreateAppointment(int patientId,AppointmentDtoForCreation appointmentDto)
         {
-            throw new NotImplementedException();
+             var appointment = _mapper.Map<Appointment>(appointmentDto);
+            appointment.PatientID = patientId;
+             await _manager.Appointment.CreateAppointment(appointment);
+             await _manager.SaveAsync();
         }
 
-        public Task DeleteAppointment(int id, bool trackChanges)
+        public async Task DeleteAppointment(int id, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var appointment = await _manager.Appointment.GetAppointmentByIdAsync(id, trackChanges);
+            await _manager.Appointment.DeleteAppointment(appointment);
+            await _manager.SaveAsync();
         }
 
-        public Task<IEnumerable<AppointmentDtoForRead>> GetAllAppointmentsAsync(bool trackChanges)
+        public async Task<IEnumerable<AppointmentDtoForRead>> GetAllAppointmentsAsync(bool trackChanges)
         {
-            throw new NotImplementedException();
+            var appointments = await _manager.Appointment.GetAllAppointmentsAsync(trackChanges);
+            return _mapper.Map<IEnumerable<AppointmentDtoForRead>>(appointments);
         }
 
-        public Task<AppointmentDtoForRead> GetAppointmentByIdAsync(int id, bool trackChanges)
+        public async Task<AppointmentDtoForRead> GetAppointmentByIdAsync(int id, bool trackChanges)
         {
-            throw new NotImplementedException();
+            var appointment = await _manager.Appointment.GetAppointmentByIdAsync(id, trackChanges);
+            return _mapper.Map<AppointmentDtoForRead>(appointment);
+        }
+        public async Task<IEnumerable<AppointmentDtoForRead>> GetAppointmentByPatientIdAsync(int id, bool trackChanges)
+        {
+            var appointments = await _manager.Appointment.GetAppointmentByPatientIdAsync(id, trackChanges);
+            return _mapper.Map<IEnumerable<AppointmentDtoForRead>>(appointments);
         }
 
-
-        public Task UpdateAppointment(int id, AppointmentDtoForUpdate appointment)
+        public async Task UpdateAppointment(int id, AppointmentDtoForUpdate appointmentDto)
         {
-            throw new NotImplementedException();
+            var entity = await _manager.Appointment.GetAppointmentByIdAsync(id, false);
+            if (entity is null)
+                throw new Exception("Appointment can not found.");
+            var appointment = _mapper.Map<Appointment>(appointmentDto);
+
+            await _manager.Appointment.UpdateAppointment(id, appointment);
+            await _manager.SaveAsync();
+
         }
     }
 }

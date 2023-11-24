@@ -20,6 +20,11 @@ namespace HospitalProject.Repositories
             var appointment = await FindByConditionAsync(a => a.AppointmentID.Equals(id), trackChanges);
             return appointment.SingleOrDefault();
         }
+        public async Task<IEnumerable<Appointment>> GetAppointmentByPatientIdAsync(int id, bool trackChanges)
+        {
+            var appointment = await FindByConditionAsync(a => a.PatientID.Equals(id), trackChanges);
+            return appointment;
+        }
 
         public async Task UpdateAppointment(int id,Appointment appointment)
         {
