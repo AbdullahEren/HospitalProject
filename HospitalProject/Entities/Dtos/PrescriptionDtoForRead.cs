@@ -12,5 +12,9 @@ namespace HospitalProject.Entities.Dtos
         public int MedicineID { get; init; }
         [Required]
         public int MedicineAmount { get; init; }
+
+        public virtual AppointmentDtoForRead Appointment { get; init; }
+        
+        public virtual MedicineDtoForRead Medicine { get; init; }
     }
 }

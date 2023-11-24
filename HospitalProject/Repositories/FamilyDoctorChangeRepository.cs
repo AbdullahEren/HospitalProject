@@ -9,8 +9,20 @@ namespace HospitalProject.Repositories
         {
         }
 
-        public async Task CreateFamilyDoctorChange(FamilyDoctorChange familyDoctorChange) =>
+        public async Task CreateFamilyDoctorChange(int patientId, int oldDoctorId, int newDoctorId)
+        {
+            var familyDoctorChange = new FamilyDoctorChange
+            {
+                ChangeDate = DateTime.Now,
+                PatientID = patientId,
+                OldFamilyDoctorID = oldDoctorId,
+                NewFamilyDoctorID = newDoctorId
+            };
+
             await CreateAsync(familyDoctorChange);
+        }
+
+
 
         public async Task DeleteFamilyDoctorChange(FamilyDoctorChange familyDoctorChange) =>
             await DeleteAsync(familyDoctorChange);

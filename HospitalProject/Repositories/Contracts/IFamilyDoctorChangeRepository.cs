@@ -6,7 +6,7 @@ namespace HospitalProject.Repositories.Contracts
     {
         Task<IEnumerable<FamilyDoctorChange>> GetFamilyDoctorChangeByPatientIdAsync(int id, bool trackChanges);
         Task<IEnumerable<FamilyDoctorChange>> GetAllFamilyDoctorChangesAsync(bool trackChanges);
-        Task CreateFamilyDoctorChange(FamilyDoctorChange familyDoctorChange);
+        Task CreateFamilyDoctorChange(int patientId, int oldDoctorId, int newDoctorId);
         Task DeleteFamilyDoctorChange(FamilyDoctorChange familyDoctorChange);
     }
 }

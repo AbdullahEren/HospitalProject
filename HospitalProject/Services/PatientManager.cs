@@ -50,6 +50,11 @@ namespace HospitalProject.Services
                 throw new Exception("Patient can not found.");
             var patient = _mapper.Map<Patient>(patientDto);
             await _manager.Patient.UpdatePatient(id, patient);
+
+            if(patientDto.FamilyDoctorID != entity.FamilyDoctorID)
+            {
+                await _manager.FamilyDoctorChange.CreateFamilyDoctorChange(id, entity.FamilyDoctorID, patientDto.FamilyDoctorID);
+            }
             await _manager.SaveAsync();
         }
     }

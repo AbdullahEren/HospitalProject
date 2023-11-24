@@ -20,6 +20,6 @@ namespace HospitalProject.Entities.Dtos
 
         public DoctorDtoForRead Doctor { get; init; }
 
-        public ICollection<Prescription> Prescriptions { get; init; }
+        public virtual ICollection<Prescription> Prescriptions { get; init; }
     }
 }

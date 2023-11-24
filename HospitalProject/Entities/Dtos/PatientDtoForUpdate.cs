@@ -9,6 +9,6 @@ namespace HospitalProject.Entities.Dtos
         [Required]
         public string LName { get; init; }
         [Required]
-        public int? FamilyDoctorID { get; init; }
+        public int FamilyDoctorID { get; init; }
     }
 }

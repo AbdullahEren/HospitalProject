@@ -12,7 +12,7 @@ namespace HospitalProject.Entities.Models
         [Required]
         public string LName { get; set; }
         [Required]
-        public int? FamilyDoctorID { get; set; }
+        public int FamilyDoctorID { get; set; }
         [Required]
         public Doctor FamilyDoctor { get; set; }
 
