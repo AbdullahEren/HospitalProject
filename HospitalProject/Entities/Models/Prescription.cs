@@ -7,8 +7,8 @@
         public int MedicineID { get; set; }
         public int MedicineAmount { get; set; }
 
-        public Appointment Appointment { get; set; }
+        public virtual Appointment Appointment { get; set; }
 
-        public Medicine Medicine { get; set; }
+        public virtual Medicine Medicine { get; set; }
     }
 }

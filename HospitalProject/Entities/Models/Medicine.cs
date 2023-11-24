@@ -9,6 +9,6 @@ namespace HospitalProject.Entities.Models
         [Required]
         public string Name { get; set; }
 
-        public ICollection<Prescription> Prescriptions { get; set; }
+        public virtual ICollection<Prescription> Prescriptions { get; set; }
     }
 }

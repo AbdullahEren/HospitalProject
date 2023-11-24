@@ -10,6 +10,7 @@ namespace HospitalProject.Infrastructure.Mapper
         {
             CreateMap<PatientDtoForCreation, Patient>();
             CreateMap<PatientDtoForUpdate,Patient>();
+            CreateMap<PatientDtoForRead,Patient>();
             CreateMap<Patient,PatientDtoForRead>().ReverseMap();
             CreateMap<DoctorDtoForCreation, Doctor>();
             CreateMap<DoctorDtoForUpdate,Doctor>();

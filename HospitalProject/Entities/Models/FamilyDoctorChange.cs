@@ -14,10 +14,10 @@ namespace HospitalProject.Entities.Models
         [Required]
         public DateTime ChangeDate { get; set; } = DateTime.Now;
 
-        public Patient Patient { get; set; }
+        public virtual Patient Patient { get; set; }
 
-        public Doctor OldFamilyDoctor { get; set; }
+        public virtual Doctor OldFamilyDoctor { get; set; }
 
-        public Doctor NewFamilyDoctor { get; set; }
+        public virtual Doctor NewFamilyDoctor { get; set; }
     }
 }

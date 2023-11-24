@@ -12,6 +12,6 @@
 
         public Doctor Doctor { get; set; }
 
-        public ICollection<Prescription> Prescriptions { get; set; }
+        public virtual ICollection<Prescription> Prescriptions { get; set; }
     }
 }

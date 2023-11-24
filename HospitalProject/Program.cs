@@ -18,6 +18,13 @@ builder.Services.AddDbContext<RepositoryContext>(options =>
 
 });
 
+builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+builder.Services.AddScoped<IPrescriptionRepository, PrescriptionRepository>();
+builder.Services.AddScoped<IMedicineRepository, MedicineRepository>();
+builder.Services.AddScoped<IFamilyDoctorChangeRepository, FamilyDoctorChangeRepository>();
+
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 
 var app = builder.Build();

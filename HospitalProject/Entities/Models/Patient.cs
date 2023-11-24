@@ -18,6 +18,6 @@ namespace HospitalProject.Entities.Models
 
         public ICollection<Appointment> Appointments { get; set; }
 
-        public ICollection<FamilyDoctorChange> FamilyDoctorChanges { get; set; }
+        public virtual ICollection<FamilyDoctorChange> FamilyDoctorChanges { get; set; }
     }
 }
