@@ -127,11 +127,14 @@ namespace HospitalProject.Services
             var entity = await _manager.Appointment.GetAppointmentByIdAsync(id, false);
             var patient = await _manager.Patient.GetPatientByIdAsync(entity.PatientID, false);
             var doctor = await _manager.Doctor.GetDoctorByIdAsync(appointmentDto.DoctorID, false);
+            if (patient is null)
+                throw new Exception("Patient can not found.");
             if (doctor is null)
                 throw new Exception("Doctor can not found.");
             if (entity is null)
                 throw new Exception("Appointment can not found.");
             var appointment = _mapper.Map<Appointment>(appointmentDto);
+            appointment.PatientID = entity.PatientID;
 
             if (patient.FamilyDoctorID == appointmentDto.DoctorID)
                 appointment.IsFamilyDoctorAppointment = true;

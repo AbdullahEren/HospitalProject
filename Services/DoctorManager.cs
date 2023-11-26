@@ -36,6 +36,23 @@ namespace HospitalProject.Services
                 throw new Exception("New Doctor can not found.");
             var patients = await _context.Patients.Where(a => a.FamilyDoctorID == id).ToListAsync();
             var doctorChanges = await _context.FamilyDoctorChanges.Where(a => a.OldFamilyDoctorID == id || a.NewFamilyDoctorID == id).ToListAsync();
+            var appointments = await _context.Appointments.Where(a => a.DoctorID == id || a.DoctorID == newDoctorId ).ToListAsync();
+            if (doctor is null)
+                 throw new Exception("Doctor can not found.");
+            foreach (var patient in patients)
+            {
+                
+                patient.FamilyDoctorID = newDoctorId;
+                
+            }
+            foreach (var appointment in appointments)
+            {
+                if (appointment.Patient.FamilyDoctorID == newDoctorId)
+                    appointment.IsFamilyDoctorAppointment = true;
+                else
+                    appointment.IsFamilyDoctorAppointment = false;
+                appointment.DoctorID = newDoctorId;
+            }
             foreach (var doctorChange in doctorChanges)
             {
                 if (doctorChange.NewFamilyDoctorID == id)
@@ -45,12 +62,7 @@ namespace HospitalProject.Services
                     doctorChange.OldFamilyDoctorID = newDoctorId;
                     doctorChange.ChangeDate = System.DateTime.Now;
             }
-            foreach (var patient in patients)
-            {
-                patient.FamilyDoctorID = newDoctorId;
-            }
-            if (doctor is null)
-                 throw new Exception("Doctor can not found.");
+            
             await _repository.Doctor.DeleteDoctor(doctor);
             await _repository.SaveAsync();
         }

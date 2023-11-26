@@ -12,7 +12,7 @@ namespace HospitalProject.Repositories.Config
             builder.HasOne(p => p.Appointment)
                 .WithMany(a => a.Prescriptions)
                 .HasForeignKey(p => p.AppointmentID)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
             builder.HasOne(p => p.Medicine)
                 .WithMany(a => a.Prescriptions)
                 .HasForeignKey(p => p.MedicineID)

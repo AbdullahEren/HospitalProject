@@ -1,5 +1,7 @@
 ﻿using HospitalProject.Entities.Models;
 using HospitalProject.Repositories.Contracts;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HospitalProject.Repositories
 {
