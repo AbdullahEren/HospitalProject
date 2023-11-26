@@ -9,8 +9,5 @@ namespace HospitalProject.Repositories.Contracts
         Task CreateDoctor(Doctor doctor);
         Task UpdateDoctor(int id,Doctor doctor);
         Task DeleteDoctor(Doctor doctor);
-        Task ApproveAppointment(Appointment appointment);
-        Task RejectAppointment(Appointment appointment);
-
     }
 }

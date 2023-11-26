@@ -42,6 +42,9 @@ namespace HospitalProject.Migrations
                     b.Property<int>("PatientID")
                         .HasColumnType("int");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.HasKey("AppointmentID");
 
                     b.HasIndex("DoctorID");
@@ -136,8 +139,7 @@ namespace HospitalProject.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("FamilyDoctorID")
-                        .IsRequired()
+                    b.Property<int>("FamilyDoctorID")
                         .HasColumnType("int");
 
                     b.Property<string>("LName")
@@ -183,13 +185,13 @@ namespace HospitalProject.Migrations
                     b.HasOne("HospitalProject.Entities.Models.Doctor", "Doctor")
                         .WithMany()
                         .HasForeignKey("DoctorID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("HospitalProject.Entities.Models.Patient", "Patient")
                         .WithMany("Appointments")
                         .HasForeignKey("PatientID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Doctor");
@@ -246,7 +248,7 @@ namespace HospitalProject.Migrations
                     b.HasOne("HospitalProject.Entities.Models.Medicine", "Medicine")
                         .WithMany("Prescriptions")
                         .HasForeignKey("MedicineID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Appointment");

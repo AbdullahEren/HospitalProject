@@ -8,6 +8,6 @@ namespace HospitalProject.Services.Contracts
         Task<IEnumerable<DoctorDtoForRead>> GetAllDoctorsAsync(bool trackChanges);
         Task CreateDoctor(DoctorDtoForCreation doctorDto);
         Task UpdateDoctor(int id, DoctorDtoForUpdate doctorDto);
-        Task DeleteDoctor(int id, bool trackChanges);
+        Task DeleteDoctor(int id,int newDoctorId, bool trackChanges);
     }
 }

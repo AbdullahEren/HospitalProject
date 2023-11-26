@@ -10,5 +10,7 @@ namespace HospitalProject.Repositories.Contracts
         Task CreateAppointment(Appointment appointment);
         Task UpdateAppointment(int id,Appointment appointment);
         Task DeleteAppointment(Appointment appointment);
+        Task ApproveAppointment(Appointment appointment);
+        Task RejectAppointment(Appointment appointment);
     }
 }

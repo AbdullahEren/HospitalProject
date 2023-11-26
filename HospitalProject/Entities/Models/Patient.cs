@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Numerics;
+using System.Text.Json.Serialization;
 
 namespace HospitalProject.Entities.Models
 {
@@ -15,9 +16,9 @@ namespace HospitalProject.Entities.Models
         public int FamilyDoctorID { get; set; }
         [Required]
         public Doctor FamilyDoctor { get; set; }
-
+        [JsonIgnore]
         public ICollection<Appointment> Appointments { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<FamilyDoctorChange> FamilyDoctorChanges { get; set; }
     }
 }

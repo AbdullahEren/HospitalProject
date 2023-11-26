@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace HospitalProject.Entities.Dtos
 {
@@ -12,7 +13,7 @@ namespace HospitalProject.Entities.Dtos
         public int MedicineID { get; init; }
         [Required]
         public int MedicineAmount { get; init; }
-
+        [JsonIgnore]
         public virtual AppointmentDtoForRead Appointment { get; init; }
         
         public virtual MedicineDtoForRead Medicine { get; init; }

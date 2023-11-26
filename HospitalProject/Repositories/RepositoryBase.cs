@@ -16,7 +16,6 @@ namespace HospitalProject.Repositories
         public async Task CreateAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
-
         }
 
         public async Task UpdateAsync(T entity)
@@ -27,8 +26,6 @@ namespace HospitalProject.Repositories
         {
             _context.Set<T>().Remove(entity);
         }
-
-
 
         public async Task<IEnumerable<T>> FindAllAsync(bool trackChanges)
         {
@@ -42,6 +39,7 @@ namespace HospitalProject.Repositories
                 ? await _context.Set<T>().Where(expression).ToListAsync()
                 : await _context.Set<T>().Where(expression).AsNoTracking().ToListAsync();
         }
+
 
     }
 }

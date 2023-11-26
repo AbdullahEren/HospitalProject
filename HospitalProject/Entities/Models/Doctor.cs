@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 
 namespace HospitalProject.Entities.Models
 {
@@ -11,6 +12,7 @@ namespace HospitalProject.Entities.Models
         [Required]
         public string LName { get; set; }
         [AllowNull]
+        [JsonIgnore]
         ICollection<Appointment> Appointments { get; set; }
         
     }

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using HospitalProject.Entities.Dtos;
 using HospitalProject.Entities.Models;
+using HospitalProject.Repositories;
 using HospitalProject.Repositories.Contracts;
 using HospitalProject.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 namespace HospitalProject.Services
 {
@@ -10,11 +12,13 @@ namespace HospitalProject.Services
     {
         private readonly IRepositoryManager _repository;
         private readonly IMapper _mapper;
+        private readonly RepositoryContext _context;
 
-        public DoctorManager(IRepositoryManager repository, IMapper mapper)
+        public DoctorManager(IRepositoryManager repository, IMapper mapper, RepositoryContext context)
         {
             _repository = repository;
             _mapper = mapper;
+            _context = context;
         }
 
         public async Task CreateDoctor(DoctorDtoForCreation doctorDto)
@@ -24,9 +28,29 @@ namespace HospitalProject.Services
             await _repository.SaveAsync();
         }
 
-        public async Task DeleteDoctor(int id, bool trackChanges)
+        public async Task DeleteDoctor(int id,int newDoctorId, bool trackChanges)
         {
             var doctor = await _repository.Doctor.GetDoctorByIdAsync(id, trackChanges);
+            var newDoctor = await _repository.Doctor.GetDoctorByIdAsync(newDoctorId, trackChanges);
+            if (newDoctor is null)
+                throw new Exception("New Doctor can not found.");
+            var patients = await _context.Patients.Where(a => a.FamilyDoctorID == id).ToListAsync();
+            var doctorChanges = await _context.FamilyDoctorChanges.Where(a => a.OldFamilyDoctorID == id || a.NewFamilyDoctorID == id).ToListAsync();
+            foreach (var doctorChange in doctorChanges)
+            {
+                if (doctorChange.NewFamilyDoctorID == id)
+                    doctorChange.NewFamilyDoctorID = newDoctorId;
+                    doctorChange.ChangeDate = System.DateTime.Now;
+                if (doctorChange.OldFamilyDoctorID == id)
+                    doctorChange.OldFamilyDoctorID = newDoctorId;
+                    doctorChange.ChangeDate = System.DateTime.Now;
+            }
+            foreach (var patient in patients)
+            {
+                patient.FamilyDoctorID = newDoctorId;
+            }
+            if (doctor is null)
+                 throw new Exception("Doctor can not found.");
             await _repository.Doctor.DeleteDoctor(doctor);
             await _repository.SaveAsync();
         }
@@ -40,6 +64,8 @@ namespace HospitalProject.Services
         public async Task<DoctorDtoForRead> GetDoctorByIdAsync(int id, bool trackChanges)
         {
             var doctor = await _repository.Doctor.GetDoctorByIdAsync(id, trackChanges);
+            if (doctor is null)
+                throw new Exception("Doctor can not found.");
             return _mapper.Map<DoctorDtoForRead>(doctor);
         }
 

@@ -21,7 +21,7 @@ namespace HospitalProject.Services
         {
             var medicine = await _repository.Medicine.GetMedicineByIdAsync(id, trackChanges);
             if (medicine is null)
-                throw new Exception("Patient can not found.");
+                throw new Exception("Medicine can not found.");
             else
             {
                 var medicineDto = _mapper.Map<MedicineDtoForRead>(medicine);

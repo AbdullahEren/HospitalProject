@@ -14,7 +14,7 @@
         public DateTime AppointmentDate { get; set; }
         public bool IsFamilyDoctorAppointment { get; set; }
 
-        public AppointmentStatus Status { get; set; }
+        public AppointmentStatus Status { get; set; } = AppointmentStatus.Pending;
 
         public Patient Patient { get; set; }
 

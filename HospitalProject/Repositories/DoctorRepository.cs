@@ -27,14 +27,6 @@ namespace HospitalProject.Repositories
             await UpdateAsync(doctor);
         }
 
-        public async Task ApproveAppointment(Appointment appointment)
-        {
-            appointment.Status = AppointmentStatus.Approved;
-        }
-
-        public async Task RejectAppointment(Appointment appointment)
-        {
-            appointment.Status = AppointmentStatus.Rejected;
-        }
+        
     }
 }

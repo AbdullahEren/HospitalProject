@@ -31,5 +31,17 @@ namespace HospitalProject.Repositories
             appointment.AppointmentID = id;
             await UpdateAsync(appointment);
         }
+
+        public async Task ApproveAppointment(Appointment appointment)
+        {
+            appointment.Status = AppointmentStatus.Approved;
+            await UpdateAsync(appointment);
+        }
+
+        public async Task RejectAppointment(Appointment appointment)
+        {
+            appointment.Status = AppointmentStatus.Rejected;
+            await UpdateAsync(appointment);
+        }
     }
 }

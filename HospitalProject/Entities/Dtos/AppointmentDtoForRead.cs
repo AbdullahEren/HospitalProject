@@ -16,10 +16,11 @@ namespace HospitalProject.Entities.Dtos
         [Required]
         public bool IsFamilyDoctorAppointment { get; init; }
 
+        [Required]
+        public AppointmentStatus Status { get; set; }
+
         public PatientDtoForRead Patient { get; init; }
 
         public DoctorDtoForRead Doctor { get; init; }
-
-        public virtual ICollection<Prescription> Prescriptions { get; init; }
     }
 }
