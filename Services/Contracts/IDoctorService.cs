@@ -1,6 +1,6 @@
-﻿using HospitalProject.Entities.Dtos;
+﻿using Entities.Dtos;
 
-namespace HospitalProject.Services.Contracts
+namespace Services.Contracts
 {
     public interface IDoctorService
     {

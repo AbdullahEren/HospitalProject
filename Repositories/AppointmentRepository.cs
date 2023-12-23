@@ -1,9 +1,9 @@
-﻿using HospitalProject.Entities.Models;
-using HospitalProject.Repositories.Contracts;
+﻿using Entities.Models;
+using Repositories.Contracts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace HospitalProject.Repositories
+namespace Repositories
 {
     public class AppointmentRepository : RepositoryBase<Appointment>, IAppointmentRepository
     {

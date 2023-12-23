@@ -1,6 +1,6 @@
-﻿using HospitalProject.Entities.Models;
+﻿using Entities.Models;
 
-namespace HospitalProject.Repositories.Contracts
+namespace Repositories.Contracts
 {
     public interface IAppointmentRepository : IRepositoryBase<Appointment>
     {

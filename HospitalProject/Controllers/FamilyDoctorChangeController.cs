@@ -1,8 +1,10 @@
-﻿using HospitalProject.Services.Contracts;
+﻿using Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HospitalProject.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class FamilyDoctorChangeController : Controller
     {
         private readonly IFamilyDoctorChangeService _service;

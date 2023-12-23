@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
-using HospitalProject.Entities.Dtos;
-using HospitalProject.Entities.Models;
-using HospitalProject.Repositories;
-using HospitalProject.Repositories.Contracts;
-using HospitalProject.Services.Contracts;
+using Entities.Dtos;
+using Entities.Models;
+using Repositories;
+using Repositories.Contracts;
+using Services.Contracts;
 using Microsoft.EntityFrameworkCore;
 
-namespace HospitalProject.Services
+namespace Services
 {
     public class FamilyDoctorChangeManager : IFamilyDoctorChangeService
     {

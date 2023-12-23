@@ -1,4 +1,4 @@
-﻿namespace HospitalProject.Repositories.Contracts
+﻿namespace Repositories.Contracts
 {
     public interface IRepositoryManager
     {

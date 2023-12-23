@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace HospitalProject.Entities.Dtos
+namespace  Entities.Dtos
 {
     public record PrescriptionDtoForRead
     {

@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 
-namespace HospitalProject.Entities.Models
+namespace Entities.Models
 {
     public class Doctor
     {

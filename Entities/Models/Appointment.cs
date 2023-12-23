@@ -1,4 +1,4 @@
-﻿namespace HospitalProject.Entities.Models
+﻿namespace Entities.Models
 {
     public enum AppointmentStatus
     {

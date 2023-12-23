@@ -1,10 +1,13 @@
-﻿using HospitalProject.Entities.Dtos;
-using HospitalProject.Services.Contracts;
+﻿using Entities.Dtos;
+using Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using ActionFilters;
 
 namespace HospitalProject.Controllers
 {
+    [Authorize(Roles = "Admin, Patient")]
     public class PatientController : Controller
     {
         private readonly IPatientService _service;
@@ -17,14 +20,14 @@ namespace HospitalProject.Controllers
             _appointmentService = appointmentService;
             _doctorService = doctorService;
         }
-
+        [Authorize]
         [HttpGet("patients")]
         public async Task<IActionResult> GetPatients()
         {
             var patients = await _service.GetAllPatientsAsync(false);
             return Ok(patients);
         }
-
+        [Authorize]
         [HttpGet("patients/{id}")]
         public async Task<IActionResult> GetPatientById(int id)
         {
@@ -38,8 +41,9 @@ namespace HospitalProject.Controllers
                 return Ok(patient);
             }
         }
-
+        [Authorize(Roles = "Admin, Patient")]
         [HttpPost("patients")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreatePatient([FromBody] PatientDtoForCreation patient)
         {
             if (patient == null)
@@ -63,8 +67,9 @@ namespace HospitalProject.Controllers
             await _service.CreatePatient(patient);
             return Ok();
         }
-
+        [Authorize(Roles = "Admin, Patient")]
         [HttpPut("patients/{id}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> UpdatePatient(int id, [FromBody] PatientDtoForUpdate patient)
         {
             if (patient == null)
@@ -79,7 +84,7 @@ namespace HospitalProject.Controllers
             await _service.UpdatePatient(id, patient);
             return Ok();
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete("patients/{id}")]
         public async Task<IActionResult> DeletePatient(int id)
         {
@@ -95,6 +100,7 @@ namespace HospitalProject.Controllers
         }
 
         [HttpPost("patients/{patientId}/appointments")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<IActionResult> CreateAppointment(int patientId, [FromBody] AppointmentDtoForCreation appointmentDto)
         {
             if (appointmentDto == null)

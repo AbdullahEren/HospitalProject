@@ -1,6 +1,6 @@
-﻿using HospitalProject.Entities.Models;
+﻿using Entities.Models;
 
-namespace HospitalProject.Services.Contracts
+namespace Services.Contracts
 {
     public interface IFamilyDoctorChangeService
     {

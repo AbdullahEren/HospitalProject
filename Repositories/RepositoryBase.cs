@@ -1,8 +1,8 @@
-﻿using HospitalProject.Repositories.Contracts;
+﻿using Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace HospitalProject.Repositories
+namespace Repositories
 {
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class, new()
     {

@@ -1,8 +1,8 @@
-﻿using HospitalProject.Entities.Models;
+﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace HospitalProject.Repositories.Config
+namespace Repositories.Config
 {
     public class AppointmentConfig : IEntityTypeConfiguration<Appointment>
     {

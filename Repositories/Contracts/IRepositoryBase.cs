@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace HospitalProject.Repositories.Contracts
+namespace Repositories.Contracts
 {
     public interface IRepositoryBase<T>
     {

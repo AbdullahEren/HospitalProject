@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HospitalProject.Entities.Dtos
+namespace Entities.Dtos
 {
     public record PrescriptionDtoForCreation
     {

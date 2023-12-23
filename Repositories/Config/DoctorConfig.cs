@@ -1,8 +1,8 @@
-﻿using HospitalProject.Entities.Models;
+﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
-namespace HospitalProject.Repositories.Config
+namespace Repositories.Config
 {
     public class DoctorConfig : IEntityTypeConfiguration<Doctor>
     {

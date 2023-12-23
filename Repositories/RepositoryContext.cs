@@ -1,11 +1,11 @@
-﻿using HospitalProject.Entities.Models;
-using HospitalProject.Repositories.Config;
+﻿using Entities.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace HospitalProject.Repositories
+namespace Repositories
 {
-    public class RepositoryContext : DbContext
+    public class RepositoryContext : IdentityDbContext<User>
     {
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
         {
@@ -20,9 +20,9 @@ namespace HospitalProject.Repositories
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
+
     }
 }

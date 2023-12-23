@@ -1,7 +1,7 @@
-﻿using HospitalProject.Entities.Models;
+﻿using Entities.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace HospitalProject.Entities.Dtos
+namespace Entities.Dtos
 {
     public record PatientDtoForRead
     {

@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using HospitalProject.Entities.Dtos;
-using HospitalProject.Entities.Models;
-using HospitalProject.Repositories.Contracts;
-using HospitalProject.Services.Contracts;
+using Entities.Dtos;
+using Entities.Models;
+using Repositories.Contracts;
+using Services.Contracts;
 
-namespace HospitalProject.Services
+namespace Services
 {
     public class MedicineManager : IMedicineService
     {

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using HospitalProject.Entities.Dtos;
-using HospitalProject.Entities.Models;
+using Entities.Dtos;
+using Entities.Models;
 
 namespace HospitalProject.Infrastructure.Mapper
 {
@@ -22,6 +22,7 @@ namespace HospitalProject.Infrastructure.Mapper
             CreateMap<AppointmentDtoForCreation,Appointment>();
             CreateMap<AppointmentDtoForUpdate,Appointment>();
             CreateMap<Appointment,AppointmentDtoForRead>().ReverseMap();
+            CreateMap<UserForRegistrationDto, User>();
 
         }
     }

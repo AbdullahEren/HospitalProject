@@ -1,9 +1,11 @@
-﻿using HospitalProject.Entities.Dtos;
-using HospitalProject.Services.Contracts;
+﻿using Entities.Dtos;
+using Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HospitalProject.Controllers
 {
+    [Authorize(Roles = "Admin, Doctor")]
     public class PrescriptionController : Controller
     {
         private readonly IPrescriptionService _service;

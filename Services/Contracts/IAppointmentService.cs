@@ -1,7 +1,7 @@
-﻿using HospitalProject.Entities.Dtos;
+﻿using Entities.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HospitalProject.Services.Contracts
+namespace Services.Contracts
 {
     public interface IAppointmentService
     {

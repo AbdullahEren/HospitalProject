@@ -1,7 +1,7 @@
-﻿using HospitalProject.Entities.Models;
-using HospitalProject.Repositories.Contracts;
+﻿using Entities.Models;
+using Repositories.Contracts;
 
-namespace HospitalProject.Repositories
+namespace Repositories
 {
     public class DoctorRepository : RepositoryBase<Doctor>, IDoctorRepository
     {

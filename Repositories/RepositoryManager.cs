@@ -1,6 +1,6 @@
-﻿using HospitalProject.Repositories.Contracts;
+﻿using Repositories.Contracts;
 
-namespace HospitalProject.Repositories
+namespace Repositories
 {
     public class RepositoryManager : IRepositoryManager
     {
